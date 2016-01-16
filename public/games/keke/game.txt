@@ -1,0 +1,10 @@
+game title: 		keke and the grey expanse
+short title:		keke & tge
+description:		keke finds herself in a colorless land. she has to find all of the color crystals in order to restore it. help keke avoid creepy, 
+					crawling enemies, navigate dangerous terrain and collect all of the crystals in the latest keke platformer adventure.
+short description:	collect all of the crystals in the latest keke platformer adventure.
+key words:			keke, keke grey expanse, html5 game, mobile web game
+canvas orientation:	landscape
+canvas dimensions:	responsive / dynamic (16:9)
+game category:		platformer
+features:			first 12 levels (sequel coming soon), high score, bonuses, saved level progress

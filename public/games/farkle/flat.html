@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no'>
+		<link rel="icon" type="image/png" href="assets/img/favicon.ico" />
+		<link rel="stylesheet" href="css/farkle.css" />
+		<style>
+			/* static and starting styles for page load: */
+			#image_pre_fetch {
+				position: absolute;
+				z-index: -1;
+			}
+
+			#start_message {
+				color: #fff;
+				text-align: right;
+				width: 90%;
+				bottom: 0;
+				position: absolute;
+				float: right;
+				padding: 5%;
+			}
+			
+			#rules_screen {
+				display: none;
+			}
+			#home_screen {
+				display: none;
+			}
+			#confirm_box {
+				display: none;
+			}
+		</style>
+		<title>farkle.</title>
+	</head>
+	<body>
+		<div id="image_pre_fetch">
+			<div class="dealer_icon"></div>
+			<div class="dealer_speech"></div>
+			<div class="farkle_notification"></div>
+			<div class="hot_dice_notification"></div>
+			<div class="control"></div>
+		</div>
+		<audio class="audio" id="dice_roll" autobuffer>
+			<source src="assets/audio/dice_roll01.mp3" />
+			<source src="assets/audio/dice_roll01.ogg" />
+		</audio>
+
+		<div id="game_box">
+			<div id="background_screen" class="screen screen_orientation"></div>
+			
+			<div id="welcome_screen">
+				<div id="welcome_white">
+				</div>
+				<div id="welcome_green" class="screen screen_orientation">
+					<div id="welcome_footer" class="bank row_bottom"></div>
+					<div id="start_message" class="text_xl">click to start</div>
+					<div id="tutorial_alert">
+						<div id="green_bg" class="half_screen_green"></div> 
+						<div id="tutorial_alert_dealer_holder">
+							<div id="tutorial_alert_dealer_icon" class="dealer_icon"></div>
+							<div id="tutorial_alert_dealer_speech" class="dealer_speech">
+								<span id="tutorial_alert_dealer_speech_text" class="dealer_speech_text text_xl "></span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div id="home_screen" class="screen screen_orientation">
+				<div id="main_menu">
+					<form>
+						<div id="single_player" class="main_menu_item text_xl">
+							<div class="menu_text">tournament</div>
+						</div>
+						<div id="multi_player" class="main_menu_item text_xl">
+							<div class="menu_text">multi player</div>
+						</div>
+						<div id="tutorial_button" class="main_menu_item text_xl">
+							<div class="menu_text">tutorial</div>
+						</div>
+						<div id="rules_button" class="main_menu_item text_xl">
+							<div class="menu_text">cheatsheet</div>
+						</div>
+					</form>
+				</div>
+
+				<div id="logo_dice" class="half_screen_green">
+					<div id="die1" class="die die_1 logo_die"></div>
+					<div id="die2" class="die die_2 logo_die"></div>
+					<div id="die3" class="die die_3 logo_die"></div>
+					<div id="die4" class="die die_4 logo_die"></div>
+					<div id="die5" class="die die_5 logo_die"></div>
+					<div id="die6" class="die die_6 logo_die"></div>
+				</div>
+<!--
+				<div id="tutorial_alert">
+					<div id="green_bg" class="half_screen_green"></div> 
+					<div id="tutorial_alert_dealer_holder">
+						<div id="tutorial_alert_dealer_icon" class="dealer_icon"></div>
+						<div id="tutorial_alert_dealer_speech" class="dealer_speech">
+							<span id="tutorial_alert_dealer_speech_text" class="dealer_speech_text text_xl "></span>
+						</div>
+					</div>
+				</div>
+-->
+			</div>
+			
+			<div id="animal_screen" class="screen screen_orientation">
+				<form id="new_players_list">
+					
+				</form>
+				<div id="next_button" class="control controls confirm_control"></div>
+			</div>
+			
+			<div id="play_screen" class="screen screen_orientation">
+				<div id="rolling_green" class="row_top">
+					<div id="inner_green" class=""></div>
+					<div id="button1" class="control controls"></div>
+					<div id="button2" class="control controls"></div>
+					<div id="dealer">
+						<div id="dealer_speech" class="dealer_speech">
+							<span id="dealer_speech_text" class="dealer_speech_text text_lg "></span>
+						</div>
+						<div id="dealer_icon" class="dealer_icon"></div>
+					</div>
+				</div>
+				<div id="bank" class="bank row_bottom" ondrop="PWG.GUIDice.drop(event)" ondragover="PWG.GUIDice.allowDrop(event)"></div>
+			</div>
+			
+			<div id="rules_screen" class="screen screen_orientation">
+				<div class="column_half left_half text_lg">
+					<p class="rules_title text_xl">gameplay</p>
+					<ul class="rules_list text_lg">
+						<li class="tutorial_item">first to 10,000 points wins</li>
+						<li class="tutorial_item">at least 1 scoring die must be banked after each roll</li>
+						<li class="tutorial_item">300 points minimum to complete turn</li>
+						<li class="tutorial_item">all dice scored = hot dice + reroll</li>
+						<li class="tutorial_item">non-scoring roll = farkle, player loses turn score</li>
+						<li class="tutorial_item">3 farkles in a row = -500 points</li>
+						<li class="tutorial_item">(click title to quit game)</li>
+						<li class="tutorial_item">(click player for info)</li>
+					</ul>
+				</div>
+				<div class="column_half right_half text_lg">
+					<p class="rules_title text_xl">scoring</p>
+					<ul class="rules_list text_lg">
+						<li class="tutorial_item">1s = 100pts</li>
+						<li class="tutorial_item">5s = 50pts</li>
+						<li class="tutorial_item">3 of a kind (triple) = 100x die</li>
+						<li class="tutorial_item">triple 1s = 1000pts</li>
+						<li class="tutorial_item">4 of a kind = 2x triple score</li>
+						<li class="tutorial_item">5 of a kind = 3x triple score</li>
+						<li class="tutorial_item">6 of a kind = 4x triple score</li>
+						<li class="tutorial_item">3 pairs (full house) = 750pts</li>
+						<li class="tutorial_item">1, 2, 3, 4, 5, 6 (straight) = 1500pts</li>
+					</ul>		
+				</div>
+			</div>
+
+			<div id="player_detail_screen" class="screen screen_orientation">
+				<div id="player_detail_holder" class="row_top"></div>
+			</div>
+
+			<div id="players_title_and_info" class="players_title_and_info">
+				<div id="notification_holder"></div>
+				<div id="farkle_splash" class="farkle_splash"></div>
+				<div id="players" class="players"></div>
+
+				<div id="confirm_box">
+					<div id="confirm_title" class="text_xl">quit game?</div>
+					<div id="cancel_button" class="control controls cancel_control"></div>
+					<div id="confirm_button" class="control controls confirm_control"></div>
+				</div>
+			</div>
+
+		</div>
+		<div id="player_name_edit_input" class="player_name_edit_input">
+			<input id="name_edit_input" type="text" value="" placeholder="" pattern="[A-Za-z0-9]{10}" maxlength="10" class="name_input text_xl" required />
+				
+			<div id="cancel_edit_button" class="control controls cancel_control"></div>
+			<div id="confirm_edit_button" class="control controls confirm_control"></div>
+			
+		</div>
+
+		<!--START LIB INCLUDES-->
+		<script src="../lib/polyworksjs/public/src/js/utils/logger.js"></script>
+		<script src="../lib/polyworksjs/public/src/js/utils/utils.js"></script>
+		<script src="../lib/polyworksjs/public/src/js/utils/device_utils.js"></script>
+		<script src="../lib/polyworksjs/public/src/js/utils/storage.js"></script>
+		<script src="../lib/polyworksjs/public/src/js/utils/timer.js"></script>
+		<script src="../lib/polyworksjs/public/src/js/animation/animator.js"></script>
+		<script src="../lib/polyworksjs/public/src/js/dom/touch_manager.js"></script>
+		<script src="../lib/polyworksjs/public/src/js/audio/audio_manager.js"></script>
+		<script src="../lib/fingerprintjs/fingerprint.js"></script>
+		<!--END LIB INCLUDES-->
+		
+		<!--START JS INCLUDES-->
+		<script src="js/farkle_sounds.js"></script>
+		<script src="js/tutorial.js"></script>
+		<script src="js/farkle_logic.js"></script>
+		<script src="js/players/player.js"></script>
+		<script src="js/players/ai_player.js"></script>
+		<script src="js/players/players.js"></script>
+		<script src="js/farkle_user.js"></script>
+		<script src="js/dealer_personality.js"></script>
+		<script src="js/gui/dice/gui_dice.js"></script>
+		<script src="js/gui/flat/flat_gui.js"></script>
+		<script src="js/game.js"></script>
+		<!--END JS INCLUDES-->
+		
+		<script type="text/javascript">
+			// PWG.FarkleSounds.init('dice_roll');
+			
+			var config = {
+				gui: FlatGUI,
+				// soundFX: FarkleSounds
+			};
+			
+			Game.init(config);
+		</script>
+	</body>
+</html>

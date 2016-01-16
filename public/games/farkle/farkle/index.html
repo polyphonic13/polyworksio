@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no'>
+		<link rel="stylesheet" type="text/css" href="css/farkle.css" />
+<!--	local
+		<script src="../src/js/utils/utils.js"></script> -->
+<!--	server -->
+		<title>farkle.</title>
+	</head>
+	<body>
+		<div id="game_box">
+			<div id="home_screen" class="screen">
+				<div id="logo_dice">
+					<div class="die die_1 logo_die"></div>
+					<div class="die die_2 logo_die"></div>
+					<div class="die die_3 logo_die"></div>
+					<div class="die die_4 logo_die"></div>
+					<div class="die die_5 logo_die"></div>
+					<div class="die die_6 logo_die"></div>
+				</div>
+				<div id="player_select" class="column_half left_half text_lg">
+					<ul>
+						<li id="one_player" class="player_select m_player_select text_md">one</li>
+						<li id="two_players" class="player_select m_player_select text_md">two</li>
+						<li id="three_players" class="player_select m_player_select text_md">three</li>
+						<li id="four_players" class="player_select m_player_select text_md">four</li>
+					</ul>
+				</div>
+				<div id="tutorial" class="nav_button text_xl"><b>?</b></div>
+			</div>
+			
+			<div id="play_screen" class="screen">
+				<div id="rolling_green"></div>
+				<div id="button1" class="button"></div>
+				<div id="button2" class="button"></div>
+				<div id="bank"></div>
+			</div>
+			
+			<div id="tutorial_screen" class="screen">
+				<div class="column_half left_half text_lg">
+					<p class="tutorial_title">gameplay</p>
+					<ul class="tutorial_list text_md">
+						<li class="tutorial_item">first to 10,000 points wins</li>
+						<li class="tutorial_item">at least 1 scoring die must be banked after each roll</li>
+						<li class="tutorial_item">300 points minimum to complete turn</li>
+						<li class="tutorial_item">all dice scored = hot dice + reroll</li>
+						<li class="tutorial_item">non-scoring roll = farkle, player loses turn score</li>
+						<li class="tutorial_item">3 farkles in a row = -500 points</li>
+						<li class="tutorial_item">(click title to quit game)</li>
+					</ul>
+				</div>
+				<div class="column_half right_half text_lg">
+					<p class="tutorial_title">scoring</p>
+					<ul class="tutorial_list text_md">
+						<li class="tutorial_item">1s = 100pts</li>
+						<li class="tutorial_item">5s = 50pts</li>
+						<li class="tutorial_item">3 of a kind (triple) = 100x die</li>
+						<li class="tutorial_item">triple 1s = 1000pts</li>
+						<li class="tutorial_item">4 of a kind = 2x triple score</li>
+						<li class="tutorial_item">5 of a kind = 3x triple score</li>
+						<li class="tutorial_item">6 of a kind = 4x triple score</li>
+						<li class="tutorial_item">3 pairs (full house) = 750pts</li>
+						<li class="tutorial_item">1, 2, 3, 4, 5, 6 (straight) = 1500pts</li>
+					</ul>		
+				</div>
+				<div id="back_button" class="nav_button text_xl"><b>X</b></div>
+			</div>
+
+			<div id="title_and_info">
+				<div id="title">farkle.</div>
+				<div id="info"></div>
+			</div>
+			
+			<div id="players" class="players"></div>
+			
+			<div id="confirm_box" class="screen">
+				<div id="confirm_title" class="text_xl">quit game?</div>
+				<div id="cancel_button" class="nav_button">no</div>
+				<div id="confirm_button" class="nav_button">yes</div>
+			</div>
+		</div>
+		
+<script src="js/farkle.min.js" type="text/javascript"></script>
+
+		
+		<script type="text/javascript">
+			Game.init(FlatGUI);
+		</script>
+	</body>
+</html>

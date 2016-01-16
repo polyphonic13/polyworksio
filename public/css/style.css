@@ -1,0 +1,381 @@
+/* https://www.myfonts.com/fonts/linotype/avenir/webfont_preview.html */
+/*
+font-family: 'Avenir 35 Light'
+font-family: 'Avenir 55 Roman'
+font-family: 'Avenir 85 Heavy'
+font-family: 'Avenir 65 Medium'
+*/
+@font-face {
+  font-family: 'Avenir 35 Light';
+  src: url('2EABE9_0_0.eot'); /* IE9 Compat Modes */
+  src: url('2EABE9_0_0.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('2EABE9_0_0.woff2') format('woff2'), /* Super Modern Browsers */
+       url('2EABE9_0_0.woff') format('woff'), /* Pretty Modern Browsers */
+       url('2EABE9_0_0.ttf')  format('truetype'), /* Safari, Android, iOS */
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	
+	font-family: 'Avenir 35 Light', Helvetica, sans-serif;
+
+	color: #555;
+}
+
+h3, h4, h5, p {
+	-webkit-margin-before: 0.33em;
+	-webkit-margin-after: 0.33em;
+
+}
+
+a {
+    color: #666666;
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #428bca;
+}
+
+#ee_canvas {
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	cursor: pointer;
+	position: absolute;
+	z-index: 10000002;
+}
+
+.column {
+	width: 48%;
+	padding: 0 1% 48% 1%; 
+	position: relative;
+}
+
+#column1 {
+	position: fixed;
+}
+
+
+#column2 {
+	float: right;
+	/*
+    width: 94%;
+    height: 150px;
+    position: absolute;
+    bottom: 0;
+    left: 1%;
+    top: 350px;
+	*/
+}
+
+#section_container {
+/*	background: rgba(238, 238, 255, 0.66);*/
+	background: rgba(125, 134, 159, 0.1);
+	border: 1px #ddd solid;
+	width: 90%;
+	height: 90%;
+	left: 3%;
+	top: 3%;
+	padding: 2%;
+	position: absolute;
+	overflow-y: scroll;
+}
+
+.list_2 {
+	list-style: none;
+}
+
+.list_inline {
+    padding-left: 0;
+    margin-left: -5px;
+}
+
+.list_inline>li {
+    display: inline-block;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+.list_stacked {
+	padding-start: 0;
+	-webkit-padding-start: 0;
+}
+
+.list_stacked>li {
+	background: #fff;
+	border-width: 1px;
+	border-color: rgba(128, 128, 128, 0.25);
+	border-style: solid;
+	margin-top: 1%;
+	width: 96%;
+/*	padding: 2%;*/
+	cursor: pointer;
+}
+
+#icon_p {
+	background: url(../img/polyworks_title.png) no-repeat center;
+	background-size: contain;
+	width: 100%;
+	padding-bottom: 75%;
+	left: 0%;
+	margin-bottom: 1%;
+	position: relative;
+}
+
+.container {
+	width: 100%;
+	position: relative;
+}
+
+.container_right {
+	
+}
+
+.content_holder {
+	width: 90%;
+	margin-left: 5%;
+}
+
+#nav {
+	width: 100%;
+}
+
+.nav_btn {
+	display: inline-block;
+	cursor: pointer;
+}
+
+.left_nav_btn {
+	margin-right: 3%;
+}
+
+.btn {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+}
+
+.btn_default {
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;
+}
+
+#games_nav {
+	float: right;
+}
+
+.centered_text {
+	text-align: center;
+}
+
+.blue1 {
+/*	color: #7a839c;*/
+	color: rgb(122,131,156);
+}
+
+.text_xl {
+	font-size: 300%;
+}
+.text_lg {
+	font-size: 150%;
+}
+.text_md {
+	font-size: 100%;
+}
+.text_sm {
+	font-size: 75%;
+}
+.text_xs {
+	font-size: 50%;
+}
+
+.modal {
+	/*
+	background: rgba(0,0,0,0.8);
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	z-index: 10000000;
+	*/
+}
+
+.game_modal {
+	-webkit-box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.25);
+	-moz-box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.25);
+	box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.25);
+
+	background: #ffffff;
+	width: 90%;
+	height: 90%;
+	left: 5%;
+	top: 5%;
+	position: absolute;
+	z-index: 10000001;
+	overflow: hidden;
+}
+
+.game_content {
+	width: 90%;
+	margin-left: 5%;
+	padding-top: 2%;
+}
+
+.close_x {
+	float: right;
+	padding: 2%;
+	cursor: pointer;
+}
+
+.release_date {
+	padding-top: 1%;
+}
+
+.game_ss {
+	background-color: #222;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: contain;
+	width: 90%;
+/*	height: 70%;*/
+	padding-bottom: 52.625%;
+	margin-left: 5%;
+}
+
+#keke_ss {
+	background-image: url(../img/keke_ss.png);
+}
+
+#farkle_ss {
+	background-image: url(../img/farkle_ss.png);
+}
+
+#doy_ss {
+	background-image: url(../img/doy_ss.png);
+}
+
+.hide { 
+	display: none;
+}
+
+.show {
+	display: block;
+}
+
+@media all and (max-width: 900px) {
+	h1, h2 {
+		-webkit-margin-before: 0.4em;
+		-webkit-margin-after: 0.4em;
+	}
+}
+
+@media all and (max-width: 800px) {
+	h1, h2 {
+		-webkit-margin-before: 0.3em;
+		-webkit-margin-after: 0.3em;
+	}
+
+	.text_xl {
+		font-size: 200%;
+	}
+	.text_lg {
+		font-size: 90%;
+	}
+
+	.text_md {
+		font-size: 85%;
+	}
+
+	.text_sm {
+		font-size: 50%;
+	}
+
+	.text_xs {
+		font-size: 25%;
+	}
+}
+
+@media all and (max-width: 600px) {
+	h1, h2 {
+		-webkit-margin-before: 0.2em;
+		-webkit-margin-after: 0.2em;
+	}
+
+	.text_xl {
+		font-size: 150%;
+	}
+	.text_lg {
+		font-size: 80%;
+	}
+
+	.text_md {
+		font-size: 75%;
+	}
+
+	.text_sm {
+		font-size: 40%;
+	}
+
+	.text_xs {
+		font-size: 20%;
+	}
+}
+
+@media all and (max-width: 550px) {
+	#site {
+		background: url(../img/polyworks_p.png) no-repeat;
+		background-position: center 66%;
+		background-size: contain;
+		left: 0;
+		top: 0;
+		right: 0; 
+		bottom: 0;
+		position: absolute;
+	}
+	#icon_p {
+		background: url(../img/polyworks_text.png) no-repeat center;
+		background-size: contain;
+		padding-bottom: 16%;
+	}
+
+	.list_stacked >li {
+		padding: 2%;
+	}
+	
+	.column {
+		width: 96%;
+		padding: 0 1% 0 1%;
+	}
+	#column1 {
+		height: 25vw;
+		position: relative;
+	}
+	#column2 {
+		height: 96vw;
+		float: none;
+	}
+
+	.game_modal {
+		width: 90%;
+		margin-bottom: 90%;
+		left: 5%;
+		top: 5%;
+	}
+}

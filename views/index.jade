@@ -1,0 +1,94 @@
+doctype html
+html
+  head
+    meta(name='viewport', content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no')
+    meta(name='google-site-verification', content='3ZZguv4wJVwXkpQ5RrcEnbNuuwNKJdWGv43Y1MqKEnI')
+    title polyworks
+    //
+      /**
+      * @license
+      * MyFonts Webfont Build ID 3058665, 2015-07-15T07:46:50-0400
+      *
+      * The fonts listed in this notice are subject to the End User License
+      * Agreement(s) entered into by the website owner. All other parties are
+      * explicitly restricted from using the Licensed Webfonts(s).
+      *
+      * You may obtain a valid license at the URLs below.
+      *
+      * Webfont: AvenirLT-Light by Linotype
+      * URL: http://www.myfonts.com/fonts/linotype/avenir/35-light/
+      * Copyright: Part of the digitally encoded machine readable outline data for producing
+      * the Typefaces provided is copyrighted &#x00A9; 1981 - 2007 Linotype GmbH,
+      * www.linotype.com. All rights reserved. This software is the property of Linotype
+      * GmbH, and may not be repro
+      * Licensed pageviews: 250,000
+      *
+      *
+      * License: http://www.myfonts.com/viewlicense?type=web&buildid=3058665
+      *
+      * © 2015 MyFonts Inc
+      */
+    link(rel='stylesheet', type='text/css', href='')
+    link(rel='icon', type='image/png', href='img/polyworks_icon.ico')
+    link(rel='stylesheet', type='text/css', href='css/style.css')
+  body
+    #site
+      #column1.column
+        header
+          #icon_p
+          #nav_container
+            #nav.text_lg
+              #about_nav.left_nav_btn.nav_btn about
+              #contact_nav.left_nav_btn.nav_btn contact
+              #store_nav.left_nav_btn.nav_btn store
+              #games_nav.nav_btn games
+      #column2.column
+        #modal.modal.hide
+        #section_container.hide
+          // About Section
+          section#about_container.container.container_right.hide
+            h2.blue1 a b o u t
+            .content_holder
+              .text_md
+                p
+                  | established in 2014, polyworks is a game development company based in brooklyn, ny.
+                p
+                  | we design 2D and 3D games for several platforms including desktop, mobile and oculus rift.
+                p
+                  | our goal is to create unique and interesting games. we want them to tell a story or create and experience only available through these environments.
+          // Contact Section
+          section#contact_container.container.container_right.hide
+            h2.blue1 c o n t a c t
+            .content_holder
+              .text_md
+                | feel free to contact us to provide feedback on our games, give us suggestions for new games, or to just say hello!
+              ul.list_2.list_stacked
+                li(onclick="PolyworksController.openLink('https://facebook.com/kekevscaterpillars');")
+                  a.btn.btn_default.text_lg(href='https://facebook.com/kekevscaterpillars', target='_"blank"') facebook
+                li(onclick="PolyworksController.openLink('https://www.google.com/+PolyworksgamesProfile');")
+                  a.btn.btn_default.text_lg(href='https://www.google.com/+PolyworksgamesProfile', target='_"blank"') google+
+                li(onclick="PolyworksController.openLink('https://twitter.com/kekenews');")
+                  a.btn.btn_default.text_lg(href='https://twitter.com/kekenews', target='_"blank"') twitter
+                li
+                  a.btn.btn_default.text_lg(href='mailto:polyworksgames@gmail.com') email
+          // Music Section
+          section#store_container.container.container_right.hide
+            h2.blue1 s t o r e
+            .content_holder
+              .text_md
+                | coming soon
+          // Games Section
+          section#games_container.container.container_right.hide
+            h2.blue1 g a m e s
+            .content_holder
+              .text_md check out our current and upcoming games
+              ul.list_2.list_stacked
+                li(onclick="PolyworksController.openGameModal('doy');")
+                  .btn.btn_default.text_lg dreams of yesterday
+                li(onclick="PolyworksController.openGameModal('farkle');")
+                  .btn.btn_default.text_lg farkle safari
+                li(onclick="PolyworksController.openGameModal('keke');")
+                  .btn.btn_default.text_lg keke and the grey expanse
+    canvas#ee_canvas.hide
+    script(src='js/polyworks_controller.js')
+    

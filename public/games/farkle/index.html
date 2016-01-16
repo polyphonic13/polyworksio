@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no'>
+		<link rel="icon" type="image/png" href="assets/img/favicon.ico" />
+		<link rel="stylesheet" href="css/farkle_safari.css" />
+<!--		<script type="text/javascript" src="http://127.0.0.1:8080/target/target-script-min.js#anonymous"></script> -->
+		<script type="text/javascript">
+		var googleTimer = setTimeout(onGoogleFontFail, 5000);
+		var setFallbackFont = function() {
+			// default to Arial font
+			var style = 'body { font-family: Helvetica; }';
+			var styleEl = document.createElement('style');
+			styleEl.setAttribute('id', 'altFontFamily');
+			styleEl.appendChild(document.createTextNode(style));
+			document.getElementsByTagName('head')[0].appendChild(styleEl);
+		};
+		
+		var onGoogleFontLoad = function() {
+			// console.log('onGoogleFontLoad');
+			clearTimeout(googleTimer);
+		}
+
+		var onGoogleFontFail = function() {
+			// console.log('onGoogleFontFail');
+			clearTimeout(googleTimer);
+			setFallbackFont();
+		};
+
+		if(navigator.onLine) {
+			// load google fonts if connected
+			WebFontConfig = {
+				google: { families: [ 'Amatic SC' ] }
+			};
+			(function() {
+				var wf = document.createElement('script');
+				wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+				'://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+				wf.type = 'text/javascript';
+				wf.async = 'true';
+				wf.onerror = onGoogleFontFail;
+				wf.onload = onGoogleFontLoad;
+				
+				var s = document.getElementsByTagName('script')[0];
+				s.parentNode.insertBefore(wf, s);
+			})(); 
+		} else {
+			setFallbackFont();
+		}
+		</script>
+
+		<title>farkle safari</title>
+	</head>
+	<body>
+		<div id="image_pre_fetch">
+			<div class="dealer_speech"></div>
+			<div class="forest_bg"></div>
+			<div class="savannah_bg"></div>
+			<div class="ocean_bg"></div>
+			<div class="jungle_bg"></div>
+			<div class="mountain_bg"></div>
+			<div class="forest_animal_spritesheet"></div>
+			<div class="savannah_animal_spritesheet"></div>
+			<div class="ocean_animal_spritesheet"></div>
+			<div class="jungle_animal_spritesheet"></div>
+			<div class="player_animal_spritesheet"></div>
+			<div class="dice_spritesheet"></div>
+			<div class="controls"></div>
+			<div class="farkle_notification"></div>
+			<div class="hot_dice_notification"></div>
+			<div class="elimination_notification"></div>
+			<div class="farkle_f_icon"></div>
+			<div class="bracket_location"></div>
+			<div class="bracket_finals"></div>
+			<div class="player_contender"></div>
+			<div class="forest_contender"></div>
+			<div class="savannah_contender"></div>
+			<div class="ocean_contender"></div>
+			<div class="jungle_contender"></div>
+			<div class="trophy_bg"></div>
+		</div>
+		<audio class="audio" id="dice_roll" autobuffer>
+			<source src="assets/audio/dice_roll01.mp3" />
+			<source src="assets/audio/dice_roll01.ogg" />
+		</audio>
+
+		<div id="game_box">
+			<!-- WELCOME SCREEN -->
+			<div id="welcome_screen" class="screen screen_orientation location_bg ">
+
+				<div id="logo_dice" class="" style="display:none;">
+					<div id="die1" class="die die_1 logo_die"></div>
+					<div id="die2" class="die die_2 logo_die"></div>
+					<div id="die3" class="die die_3 logo_die"></div>
+					<div id="die4" class="die die_4 logo_die"></div>
+					<div id="die5" class="die die_5 logo_die"></div>
+					<div id="die6" class="die die_6 logo_die"></div>
+				</div>
+
+				<div id="start_message" class="text_xl">click to start</div>
+				<div id="tutorial_alert">
+					<div id="tutorial_alert_dealer_holder">
+						<div id="tutorial_alert_dealer_icon" class=""></div>
+						<div id="tutorial_alert_dealer_speech" class="dealer_speech">
+							<span id="tutorial_alert_dealer_speech_text" class="dealer_speech_text text_xl "></span>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<!-- HOME SCREEN -->
+			<div id="home_screen" class="screen screen_orientation">
+				<div id="main_menu">
+						<div id="tournament_button" class="main_menu_item text_xl"></div>
+						<div id="practice_game_button" class="main_menu_item text_xl"></div>
+						<div id="multiplayer_game_button" class="main_menu_item text_xl"></div>
+						<div id="tutorial_button" class="main_menu_item text_xl"></div>
+						<div id="rules_button" class="main_menu_item text_xl"></div>
+				</div>
+				<div id="home_close_button" class="control controls button1 cancel_control"></div>
+			</div>
+			
+			<!-- TOURNAMENT SETUP SCREEN -->
+			<div id="tournament_screen" class="screen screen_orientation">
+				<div id="tournament_choice_title" class="choice_title text_xl">select tournament</div>
+				<div id="tournament_menu">
+				</div>
+				<div id="tournament_close_button" class="control controls button1 cancel_control"></div>
+				<div id="tournament_next_button" class="next_button control controls confirm_control"></div>
+			</div>
+			
+			<!-- TOURNAMENT BRACKET SCREEN -->
+			<div id="bracket_screen" class="screen double_wide_screen_orientation">
+				<div id="bracket_left" class="bracket_sub_screen">
+					<div id="tournament_state_bg" class=""></div>
+					<div id="bracket_graphic" class="bracket_graphic bracket_location"></div>
+					<div id="contender_names"></div>
+					<div id="bracket_close_button" class="control controls button1 cancel_control"></div>
+					<div id="bracket_next_button" class="next_button control controls confirm_control"></div>
+				</div>
+				<div id="bracket_right" class="bracket_sub_screen">
+					<div id="finals_bg" class="location_bg mountain_bg"></div>
+					<div id="location_bgs">
+						<div id="location0" class="mini_location_bg location_bg"></div>
+						<div id="location1" class="mini_location_bg location_bg"></div>
+						<div id="location2" class="mini_location_bg location_bg"></div>
+						<div id="location3" class="mini_location_bg location_bg"></div>
+					</div>
+					<div id="bracket_finals_graphic" class="bracket_graphic bracket_finals"></div>
+					<div id="finalist_names"></div>
+				</div>
+			</div>
+			
+			<!-- LOCATION SELECTION SCREEN-->
+			<div id="location_screen" class="screen screen_orientation">
+				<div id="location_choice_title" class="choice_title text_xl">choose location</div>
+				<div id="location_menu">
+					<div id="forest_choice" class="location_choice choice_box choice_left choice_top" data-location="forest">
+						<div id="forest" class="choice_icon forest_bg"></div>
+						<div class="choice_name text_lg"></div>
+						<div id="forest_highlight" class="selection_highlight"></div>
+					</div>
+					<div id="savannah_choice" class="location_choice choice_box choice_right choice_top" data-location="savannah">
+						<div id="savannah" class="choice_icon savannah_bg"></div>
+						<div class="choice_name text_lg"></div>
+						<div id="savannah_highlight" class="selection_highlight"></div>
+					</div>
+					<div id="ocean_choice" class="location_choice choice_box choice_left choice_bottom" data-location="ocean">
+						<div id="ocean" class="choice_icon ocean_bg"></div>
+						<div class="choice_name text_lg"></div>
+						<div id="ocean_highlight" class="selection_highlight"></div>
+					</div>
+					<div id="jungle_choice" class="location_choice choice_box choice_right choice_bottom" data-location="jungle">
+						<div id="jungle" class="choice_icon jungle_bg"></div>
+						<div class="choice_name text_lg"></div>
+						<div id="jungle_highlight" class="selection_highlight"></div>
+					</div>
+				</div>
+				<div id="location_close_button" class="control controls button1 cancel_control"></div>
+				<div id="location_next_button" class="next_button control controls confirm_control"></div>
+				
+			</div>
+			
+			<!-- PLAYER ANIMAL SELECTION SCREEN -->
+			<div id="animal_screen" class="screen screen_orientation">
+				<div id="choice_title" class="choice_title text_xl"></div>
+				<div id="animal_menu">
+					<div id="dog_choice" class="player_animal_choice choice_box choice_left choice_top">
+						<div id="dog" class="choice_icon player_animal_spritesheet dog"></div>
+						<div class="choice_name text_lg"></div>
+						<div id="dog_highlight" class="selection_highlight"></div>
+					</div>
+					<div id="rabbit_choice" class="player_animal_choice choice_box choice_right choice_top">
+						<div id="rabbit" class="choice_icon player_animal_spritesheet rabbit"></div>
+						<div class="choice_name text_lg"></div>
+						<div id="rabbit_highlight" class="selection_highlight"></div>
+					</div>
+					<div id="fish_choice" class="player_animal_choice choice_box choice_left choice_bottom">
+						<div id="fish" class="choice_icon player_animal_spritesheet fish"></div>
+						<div class="choice_name text_lg"></div>
+						<div id="fish_highlight" class="selection_highlight"></div>
+					</div>
+					<div id="cat_choice" class="player_animal_choice choice_box choice_right choice_bottom">
+						<div id="cat" class="choice_icon player_animal_spritesheet cat"></div>
+						<div class="choice_name text_lg"></div>
+						<div id="cat_highlight" class="selection_highlight"></div>
+					</div>
+				</div>
+				<div id="animal_close_button" class="control controls button1 cancel_control"></div>
+				<div id="animal_next_button" class="next_button control controls confirm_control"></div>
+			</div>
+			
+			<!-- PLAY SCREEN -->
+			<div id="play_screen" class="screen screen_orientation location_bg ">
+				<div id="rolling_green" class="row_top">
+					<div id="player_icon" class=""></div>
+					<div id="inner_green" class=""></div>
+					<div id="button1" class="control controls"></div>
+					<div id="button2" class="control controls"></div>
+					<div id="dealer">
+						<div id="dealer_speech" class="dealer_speech">
+							<span id="dealer_speech_text" class="dealer_speech_text text_lg "></span>
+						</div>
+						<div id="dealer_icon" class="forest_animal_spritesheet npc_animal_bg "></div>
+					</div>
+					<div id="versus_text" class=""></div>
+				</div>
+				<div id="bank" class="bank row_bottom" ondrop="PWG.GUIDice.drop(event)" ondragover="PWG.GUIDice.allowDrop(event)"></div>
+				<div id="large_trophy" class="trophy_bg "></div>
+			</div>
+			
+			<!-- CHEATSHEET SCREEN -->
+			<div id="rules_screen" class="screen screen_orientation">
+				<div class="column_half left_half text_lg">
+					<p class="rules_title text_xl">gameplay</p>
+					<ul class="rules_list text_md">
+						<li class="tutorial_item"><b>first to 10,000 points wins</b></li>
+						<li class="tutorial_item"><b>at least 1 scoring die must be banked after each roll</b></li>
+						<li class="tutorial_item"><b>300 points minimum to complete turn</b></li>
+						<li class="tutorial_item"><b>all dice scored = hot dice + reroll</b></li>
+						<li class="tutorial_item"><b>non-scoring roll = farkle, player loses turn score</b></li>
+						<li class="tutorial_item"><b>3 farkles in a row = -500 points</b></li>
+						<li class="tutorial_item"><b>(click title to quit game)</b></li>
+						<li class="tutorial_item"><b>(click player for info)</b></li>
+					</ul>
+				</div>
+				<div class="column_half right_half text_lg">
+					<p class="rules_title text_xl">scoring</p>
+					<ul class="rules_list text_md">
+						<li class="tutorial_item"><b>1s = 100pts</b></li>
+						<li class="tutorial_item"><b>5s = 50pts</b></li>
+						<li class="tutorial_item"><b>3 of a kind (triple) = 100x die</b></li>
+						<li class="tutorial_item"><b>triple 1s = 1000pts</b></li>
+						<li class="tutorial_item"><b>4 of a kind = 2x triple score</b></li>
+						<li class="tutorial_item"><b>5 of a kind = 3x triple score</b></li>
+						<li class="tutorial_item"><b>6 of a kind = 4x triple score</b></li>
+						<li class="tutorial_item"><b>3 pairs (full house) = 750pts</b></li>
+						<li class="tutorial_item"><b>1, 2, 3, 4, 5, 6 (straight) = 1500pts</b></li>
+					</ul>		
+				</div>
+				<div id="rules_close_button" class="control controls button1 cancel_control"></div>
+			</div>
+
+			<!-- PLAYER DETAIL SCREEN -->
+			<div id="stats_screen" class="screen screen_orientation">
+				<div id="player_stats_holder" class=""></div>
+				<div id="stats_close_button" class="control controls button1 cancel_control"></div>
+			</div>
+
+			<!-- PLAYERS AND TITLE BOX -->
+			<div id="players_title_and_info" class="players_title_and_info">
+				<div id="notification_holder"></div>
+				<div id="farkle_splash" class="farkle_splash"></div>
+				<div id="players" class="players"></div>
+
+				<div id="confirm_box">
+					<div id="confirm_title" class="text_xl">quit game?</div>
+					<div id="cancel_button" class="control controls cancel_control"></div>
+					<div id="confirm_button" class="control controls confirm_control"></div>
+				</div>
+			</div>
+
+		</div>
+
+		<div id="ad_screen"></div>
+		
+		<div id="end_screen"></div>
+		
+<script src="js/farkle.min.js" type="text/javascript"></script>
+
+		
+		<script type="text/javascript">
+			var config = {
+				// soundFX: FarkleSounds,
+				gui: PWG.SafariGUI,
+				// adSystem: {
+				// 	type: 'TRE_SENSA',
+				// 	config: {
+				// 		GAME_ID: 'farklesafari',
+				// 		interstitial: true,
+				// 		divIds: {
+				// 			parentDiv: 'ad_screen',
+				// 			blurDiv: 'game_box',
+				// 			endScreenDiv: 'end_screen'
+				// 		}
+				// 	}
+				// }
+			};
+			// alert('has transform = ' + PWG.DeviceUtils.getHasTransform());
+			PWG.App.init(config);
+		</script>
+	</body>
+</html>
