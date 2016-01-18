@@ -50,10 +50,13 @@ passport.deserializeUser(Account.deserializeUser());
 // mongoose
 // mongoose.connect("localhost:27017/polyworksio");
 
-// mongoose.connect(config.db);
-// mongoose.connection.once('open', function() {
-// 	console.log('mongoose connection open');
-// });
+mongoose.connect(config.db);
+mongoose.connection.once('open', function() {
+	console.log('mongoose connection open');
+});
+mongoose.connection.on('error', function(err) {
+	console.log('mongoose conection err: ', err);
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
