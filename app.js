@@ -49,6 +49,7 @@ passport.deserializeUser(Account.deserializeUser());
 
 // mongoose
 // mongoose.connect("localhost:27017/polyworksio");
+console.log("starting up node app, db = " + config.db);
 
 mongoose.connect(config.db);
 mongoose.connection.once('open', function() {
