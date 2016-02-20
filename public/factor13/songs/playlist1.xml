@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+	<playList>
+		<song>
+			<url>http://www.factor13.net/songs/factor13_23.mp3</url>
+			<title>23</title>
+			<artist>factor13</artist>
+		</song>
+		<song>
+			<url>http://www.factor13.net/songs/factor13_b016.mp3</url>
+			<title>b016</title>
+			<artist>factor13</artist>
+		</song>
+		<song>
+			<url>http://www.factor13.net/songs/the_megaheartz_lavender.mp3</url>
+			<title>lavender</title>
+			<artist>the megaheartz</artist>
+		</song>
+	</playList>

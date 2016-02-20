@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<songs>
+<song name="whispering winter windows" band="factor13" file="songs/factor13_whispering_winter_windows.mp3" />
+<song name="fall into autumn" band="factor13" file="songs/factor13_fall_into_autumn.mp3" />
+<song name="round two" band="factor13" file="songs/factor13_round_two.mp3" />
+<song name="la despedida" band="factor13" file="songs/factor13_la_despedida.mp3" />
+<song name="23" band="factor13" file="songs/factor13_23.mp3" />
+<song name="lavender" band="the megaheartz" file="songs/the_megaheartz_lavender.mp3" />
+<song name="subsonic resonance" band="the megaheartz" file="songs/the_megaheartz_subsonic_resonance.mp3" />
+<song name="the forever morning" band="the megaheartz" file="songs/the_megaheartz_the_forever_morning.mp3" />
+</songs>
